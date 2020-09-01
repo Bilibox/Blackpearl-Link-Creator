@@ -1,28 +1,24 @@
-###############################
-###      Author: Bilibox    ###
-###      Modder: Cocee      ###
-###############################
+try:
+    import tkinter as tk
+    from tkinter import scrolledtext
+    import requests
+    import os
+    import base64
+    import sys
+    import subprocess
+    import argparse
+    import pkg_resources
+    from concurrent.futures import ThreadPoolExecutor
+except Exception as e:
+    required = {'requests'}
+    installed = {pkg.key for pkg in pkg_resources.working_set}
+    missing = required - installed
+    if missing:
+        python = sys.executable
+        subprocess.check_call(
+            [python, '-m', 'pip', 'install', *missing],
+            stdout=subprocess.DEVNULL)
 
-
-import tkinter as tk
-from tkinter import scrolledtext
-import os
-import base64
-import sys
-import subprocess
-import argparse
-import pkg_resources
-from concurrent.futures import ThreadPoolExecutor
-
-required = {'requests'}
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
-
-if missing:
-    python = sys.executable
-    subprocess.check_call(
-        [python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
-import requests
 
 __version__ = '1.0.3'
 
@@ -235,9 +231,8 @@ class Gui():
                         tk.INSERT, hidebbcode[0] + '\n')
                 self.OutputBox.insert(tk.INSERT, fileName)
                 self.OutputBox.insert(
-                    tk.INSERT, downcloudBBcode[0] + fileLink.replace('\n', '')
-                    + downcloudBBcode[1] + '\n\n'
-                )
+                    tk.INSERT, downcloudBBcode[0] +
+                    fileLink.replace('\n', '') + downcloudBBcode[1] + '\n\n')
                 if len(filesPath) == count:
                     self.OutputBox.insert(tk.INSERT, hidebbcode[1])
 
