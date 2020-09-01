@@ -104,7 +104,7 @@ class LinkChecker():
         filesPath = [os.path.join(path, fl) for fl in files]
 
         count = 0
-        
+
         hidebbcode = [
             "[Hidereact=1,2,3,4,5,6,7,8]",
             "[/hidereact]"
@@ -116,7 +116,7 @@ class LinkChecker():
 
         with ThreadPoolExecutor() as executor:
             for result in executor.map(self.RcloneLink, filesPath):
-                print(files[count])
+                print(os.path.splitext(files[count])[0])
                 count += 1
                 print(hidebbcode[0] + downcloudBBcode[0] +
                       result + downcloudBBcode[1] + hidebbcode[1])
