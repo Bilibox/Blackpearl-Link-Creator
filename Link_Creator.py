@@ -1,7 +1,6 @@
 try:
     import tkinter as tk
     from tkinter import scrolledtext
-    import requests
     import os
     import base64
     import sys
@@ -9,6 +8,7 @@ try:
     import argparse
     import pkg_resources
     from concurrent.futures import ThreadPoolExecutor
+    import requests
 except Exception as e:
     required = {'requests'}
     installed = {pkg.key for pkg in pkg_resources.working_set}
